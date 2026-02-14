@@ -19,7 +19,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <Link
               href="/about"
-              className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors hidden sm:block"
+              className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
               About
             </Link>
