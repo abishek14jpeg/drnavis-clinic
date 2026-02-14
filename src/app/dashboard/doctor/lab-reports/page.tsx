@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { FlaskConical, Plus, X } from "lucide-react";
 
 interface Pet {
@@ -32,7 +32,7 @@ export default function DoctorLabReportsPage() {
     const [showForm, setShowForm] = useState(false);
     const [form, setForm] = useState({ petId: "", testName: "", testType: "", results: "", notes: "" });
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         const [reportsRes, petsRes] = await Promise.all([
             fetch("/api/lab-reports"),
             fetch("/api/pets"),
@@ -40,9 +40,13 @@ export default function DoctorLabReportsPage() {
         setReports(await reportsRes.json());
         setPets(await petsRes.json());
         setLoading(false);
-    };
+    }, []);
 
-    useEffect(() => { fetchData(); }, []);
+    useEffect(() => {
+        (async () => {
+            await fetchData();
+        })();
+    }, [fetchData]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

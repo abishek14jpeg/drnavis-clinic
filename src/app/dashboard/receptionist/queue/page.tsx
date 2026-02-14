@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { ClipboardList } from "lucide-react";
 
 interface QueueEntry {
@@ -17,14 +17,18 @@ export default function ReceptionQueuePage() {
     const [queue, setQueue] = useState<QueueEntry[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const fetchQueue = async () => {
+    const fetchQueue = useCallback(async () => {
         const res = await fetch("/api/queue");
         const data = await res.json();
         setQueue(data);
         setLoading(false);
-    };
+    }, []);
 
-    useEffect(() => { fetchQueue(); }, []);
+    useEffect(() => {
+        (async () => {
+            await fetchQueue();
+        })();
+    }, [fetchQueue]);
 
     const updateStatus = async (id: string, status: string) => {
         await fetch("/api/queue", {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { PawPrint, Plus, Trash2, Edit3, X } from "lucide-react";
 
 interface Pet {
@@ -20,14 +20,18 @@ export default function PatientPetsPage() {
     const [editPet, setEditPet] = useState<Pet | null>(null);
     const [form, setForm] = useState({ name: "", species: "", breed: "", age: "", weight: "", medicalNotes: "" });
 
-    const fetchPets = async () => {
+    const fetchPets = useCallback(async () => {
         const res = await fetch("/api/pets");
         const data = await res.json();
         setPets(data);
         setLoading(false);
-    };
+    }, []);
 
-    useEffect(() => { fetchPets(); }, []);
+    useEffect(() => {
+        (async () => {
+             await fetchPets();
+        })();
+    }, [fetchPets]);
 
     const resetForm = () => {
         setForm({ name: "", species: "", breed: "", age: "", weight: "", medicalNotes: "" });

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Calendar, CheckCircle, XCircle } from "lucide-react";
 
 interface Appointment {
@@ -18,14 +18,18 @@ export default function ReceptionistAppointmentsPage() {
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState("ALL");
 
-    const fetchAppointments = async () => {
+    const fetchAppointments = useCallback(async () => {
         const res = await fetch("/api/appointments");
         const data = await res.json();
         setAppointments(data);
         setLoading(false);
-    };
+    }, []);
 
-    useEffect(() => { fetchAppointments(); }, []);
+    useEffect(() => {
+        (async () => {
+            await fetchAppointments();
+        })();
+    }, [fetchAppointments]);
 
     const updateStatus = async (id: string, status: string) => {
         await fetch(`/api/appointments/${id}`, {

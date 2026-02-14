@@ -81,7 +81,7 @@ export function Hero3D() {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                     <Button size="lg" className="rounded-full text-base font-semibold px-8 h-12 shadow-lg shadow-primary/20 hover:scale-105 transition-transform" asChild>
-                        <a href="#contact">Book Consultation</a>
+                        <a href="/login">Book Consultation</a>
                     </Button>
                     <Button variant="outline" size="lg" className="rounded-full text-base px-8 h-12 hover:bg-secondary" asChild>
                         <a href="#services">Our Services</a>

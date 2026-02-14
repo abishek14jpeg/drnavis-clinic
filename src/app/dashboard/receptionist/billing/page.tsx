@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { CreditCard, Plus, X } from "lucide-react";
 
 interface Invoice {
@@ -28,7 +28,7 @@ export default function ReceptionistBillingPage() {
         items: [{ description: "", amount: 0 }],
     });
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         const res = await fetch("/api/invoices");
         setInvoices(await res.json());
 
@@ -41,9 +41,13 @@ export default function ReceptionistBillingPage() {
         });
         setOwners(Object.values(uniqueOwners));
         setLoading(false);
-    };
+    }, []);
 
-    useEffect(() => { fetchData(); }, []);
+    useEffect(() => {
+        (async () => {
+            await fetchData();
+        })();
+    }, [fetchData]);
 
     const addItem = () => setForm({ ...form, items: [...form.items, { description: "", amount: 0 }] });
     const removeItem = (i: number) => setForm({ ...form, items: form.items.filter((_, idx) => idx !== i) });
