@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Environment, Center } from "@react-three/drei";
 import { Stethoscope, Bone, Heart, Star, ShieldCheck, Clock, MapPin } from "lucide-react";
@@ -199,41 +199,47 @@ function AboutHero() {
     );
 }
 
-/* ─── Story Timeline (Sticky Scroll Reveal) ─── */
-function StoryTimeline() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"],
-    });
-
-    const textOpacity1 = useTransform(scrollYProgress, [0.1, 0.25], [0, 1]);
-    const textY1 = useTransform(scrollYProgress, [0.1, 0.25], [40, 0]);
-
-    const textOpacity2 = useTransform(scrollYProgress, [0.3, 0.45], [0, 1]);
-    const textY2 = useTransform(scrollYProgress, [0.3, 0.45], [40, 0]);
-
-    const textOpacity3 = useTransform(scrollYProgress, [0.5, 0.65], [0, 1]);
-    const textY3 = useTransform(scrollYProgress, [0.5, 0.65], [40, 0]);
-
-    const lineHeight = useTransform(scrollYProgress, [0.1, 0.7], ["0%", "100%"]);
-
+/* ─── Timeline Step ─── */
+function TimelineStep({ color, title, text, delay }: {
+    color: string;
+    title: string;
+    text: string;
+    delay: number;
+}) {
     return (
-        <section ref={containerRef} className="py-32 relative">
+        <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay, ease: "easeOut" }}
+            className="relative"
+        >
+            <div className={`absolute -left-[2.35rem] md:-left-[2.6rem] w-5 h-5 rounded-full ${color} border-4 border-background shadow-lg`} />
+            <h3 className="text-2xl font-bold font-heading mb-4 text-foreground">{title}</h3>
+            <p className="text-lg text-muted-foreground leading-relaxed">{text}</p>
+        </motion.div>
+    );
+}
+
+/* ─── Story Timeline (Viewport-based Reveal) ─── */
+function StoryTimeline() {
+    return (
+        <section className="py-24 md:py-32 relative">
             {/* Background accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/3 rounded-full blur-3xl -z-10" />
 
             <div className="container mx-auto px-6 max-w-4xl">
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-20"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16 md:mb-20"
                 >
                     <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
                         The Journey
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-bold font-heading tracking-tight">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight">
                         A Story of{" "}
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-teal-400">
                             Passion
@@ -242,45 +248,30 @@ function StoryTimeline() {
                 </motion.div>
 
                 <div className="relative pl-12 md:pl-16">
-                    {/* Animated vertical line */}
-                    <div className="absolute left-4 md:left-6 top-0 bottom-0 w-[2px] bg-border rounded-full">
-                        <motion.div
-                            className="w-full bg-linear-to-b from-primary to-teal-400 rounded-full"
-                            style={{ height: lineHeight }}
+                    {/* Vertical line (static gradient) */}
+                    <div className="absolute left-4 md:left-6 top-0 bottom-0 w-[2px] rounded-full bg-linear-to-b from-primary via-teal-400 to-border" />
+
+                    <div className="space-y-16 md:space-y-20">
+                        <TimelineStep
+                            color="bg-primary"
+                            title="The Spark"
+                            text="My journey into veterinary medicine began with a simple yet profound love and a deep desire to serve the animal community. Growing up surrounded by animals, I realized early on that healing them was my calling."
+                            delay={0}
                         />
-                    </div>
 
-                    <div className="space-y-20">
-                        <motion.div style={{ opacity: textOpacity1, y: textY1 }} className="relative">
-                            <div className="absolute -left-[2.35rem] md:-left-[2.6rem] w-5 h-5 rounded-full bg-primary border-4 border-background shadow-lg" />
-                            <h3 className="text-2xl font-bold font-heading mb-4 text-foreground">The Spark</h3>
-                            <p className="text-lg text-muted-foreground leading-relaxed">
-                                My journey into veterinary medicine began with a simple yet profound love
-                                and a deep desire to serve the animal community. Growing up surrounded by
-                                animals, I realized early on that healing them was my calling.
-                            </p>
-                        </motion.div>
+                        <TimelineStep
+                            color="bg-teal-400"
+                            title="The Growth"
+                            text="Over time, this passion grew stronger. Pursuing an M.V.Sc in Veterinary Surgery and Radiology gave me the tools to tackle even the most complex orthopedic cases, from fracture repairs to hip dysplasia corrections."
+                            delay={0.1}
+                        />
 
-                        <motion.div style={{ opacity: textOpacity2, y: textY2 }} className="relative">
-                            <div className="absolute -left-[2.35rem] md:-left-[2.6rem] w-5 h-5 rounded-full bg-teal-400 border-4 border-background shadow-lg" />
-                            <h3 className="text-2xl font-bold font-heading mb-4 text-foreground">The Growth</h3>
-                            <p className="text-lg text-muted-foreground leading-relaxed">
-                                Over time, this passion grew stronger. Pursuing an M.V.Sc in Veterinary
-                                Surgery and Radiology gave me the tools to tackle even the most
-                                complex orthopedic cases, from fracture repairs to hip dysplasia corrections.
-                            </p>
-                        </motion.div>
-
-                        <motion.div style={{ opacity: textOpacity3, y: textY3 }} className="relative">
-                            <div className="absolute -left-[2.35rem] md:-left-[2.6rem] w-5 h-5 rounded-full bg-accent border-4 border-background shadow-lg" />
-                            <h3 className="text-2xl font-bold font-heading mb-4 text-foreground">The Mission</h3>
-                            <p className="text-lg text-muted-foreground leading-relaxed">
-                                What began as a heartfelt dream transformed into a purposeful and
-                                fulfilling vocation. Today, Dr. Navi&apos;s Clinic stands as a place where
-                                pets are treated as family &mdash; with personalized, professional care rooted
-                                in science and compassion.
-                            </p>
-                        </motion.div>
+                        <TimelineStep
+                            color="bg-accent"
+                            title="The Mission"
+                            text="What began as a heartfelt dream transformed into a purposeful and fulfilling vocation. Today, Dr. Navi's Clinic stands as a place where pets are treated as family — with personalized, professional care rooted in science and compassion."
+                            delay={0.1}
+                        />
                     </div>
                 </div>
             </div>
