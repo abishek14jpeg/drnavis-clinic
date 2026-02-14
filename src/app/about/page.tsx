@@ -208,15 +208,15 @@ function TimelineStep({ color, title, text, delay }: {
 }) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay, ease: "easeOut" }}
+            viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+            transition={{ duration: 0.6, delay, ease: "easeOut" }}
             className="relative"
         >
             <div className={`absolute -left-[2.35rem] md:-left-[2.6rem] w-5 h-5 rounded-full ${color} border-4 border-background shadow-lg`} />
-            <h3 className="text-2xl font-bold font-heading mb-4 text-foreground">{title}</h3>
-            <p className="text-lg text-muted-foreground leading-relaxed">{text}</p>
+            <h3 className="text-xl sm:text-2xl font-bold font-heading mb-3 text-foreground">{title}</h3>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">{text}</p>
         </motion.div>
     );
 }
@@ -224,7 +224,7 @@ function TimelineStep({ color, title, text, delay }: {
 /* ─── Story Timeline (Viewport-based Reveal) ─── */
 function StoryTimeline() {
     return (
-        <section className="py-24 md:py-32 relative">
+        <section className="py-24 md:py-32 pb-32 md:pb-40 relative">
             {/* Background accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/3 rounded-full blur-3xl -z-10" />
 
@@ -267,9 +267,9 @@ function StoryTimeline() {
                         />
 
                         <TimelineStep
-                            color="bg-accent"
+                            color="bg-amber-400"
                             title="The Mission"
-                            text="What began as a heartfelt dream transformed into a purposeful and fulfilling vocation. Today, Dr. Navi's Clinic stands as a place where pets are treated as family — with personalized, professional care rooted in science and compassion."
+                            text={"What began as a heartfelt dream transformed into a purposeful and fulfilling vocation. Today, Dr. Navi\u2019s Clinic stands as a place where pets are treated as family \u2014 with personalized, professional care rooted in science and compassion."}
                             delay={0.1}
                         />
                     </div>
