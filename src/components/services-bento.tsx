@@ -37,54 +37,59 @@ const services = [
 
 export function ServicesBento() {
     return (
-        <section id="services" className="container py-24" aria-labelledby="services-heading">
-            <div className="mb-12 text-center max-w-2xl mx-auto space-y-4">
-                <h2 id="services-heading" className="text-4xl md:text-5xl font-bold font-heading tracking-tight">
-                    Comprehensive Care for Every Paw
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                    From routine checkups to complex orthopedic surgeries, Dr. Navi provides world-class veterinary medicine in Kalapatti, Coimbatore.
-                </p>
-            </div>
+        <section id="services" className="py-16 md:py-20 bg-background" aria-labelledby="services-heading">
+            <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 xl:px-12">
+                <div className="mb-12 md:mb-16 text-center max-w-2xl mx-auto space-y-4">
+                    <h2 id="services-heading" className="text-4xl md:text-5xl font-bold font-heading tracking-tight text-foreground">
+                        Comprehensive Care for Every Paw
+                    </h2>
+                    <p className="text-lg text-muted-foreground">
+                        From routine checkups to complex orthopedic surgeries, Dr. Navi provides world-class veterinary medicine in Kalapatti, Coimbatore.
+                    </p>
+                </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-                {services.map((service, index) => (
-                    <motion.div
-                        key={service.title}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className={cn(
-                            "group relative overflow-hidden rounded-3xl border border-white/10 dark:border-white/5 p-8 pb-10 transition-all hover:scale-[1.01] hover:shadow-xl",
-                            "backdrop-blur-sm bg-white/50 dark:bg-black/20",
-                            service.className
-                        )}
-                    >
-                        <div className="absolute top-0 right-0 p-6 opacity-50 group-hover:opacity-100 transition-opacity group-hover:rotate-12 transform duration-500">
-                            <service.icon className="w-24 h-24 text-foreground/5" />
-                        </div>
-
-                        <div className="relative z-10 h-full flex flex-col justify-between">
-                            <div>
-                                <div className="w-12 h-12 rounded-2xl bg-background/80 shadow-sm flex items-center justify-center mb-6 text-primary group-hover:text-accent transition-colors">
-                                    <service.icon className="w-6 h-6" />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px] lg:auto-rows-[300px]">
+                    {services.map((service, index) => {
+                        const isLarge = index === 0;
+                        return (
+                            <motion.div
+                                key={service.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className={cn(
+                                    "group relative overflow-hidden rounded-3xl border border-border p-8 pb-10 transition-all hover:scale-[1.01] hover:shadow-xl",
+                                    "backdrop-blur-sm bg-card",
+                                    service.className
+                                )}
+                            >
+                                <div className="absolute top-0 right-0 p-6 opacity-50 group-hover:opacity-100 transition-opacity group-hover:rotate-12 transform duration-500">
+                                    <service.icon className="w-24 h-24 text-foreground/5" />
                                 </div>
-                                <h3 className="text-2xl font-bold mb-2 font-heading">{service.title}</h3>
-                                <p className="text-muted-foreground">{service.description}</p>
-                            </div>
 
-                            <ul className="space-y-1 mt-4">
-                                {service.items.map((item) => (
-                                    <li key={item} className="text-sm font-medium flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </motion.div>
-                ))}
+                                <div className={cn("relative z-10 h-full flex flex-col justify-center", isLarge ? "gap-10" : "gap-6")}>
+                                    <div>
+                                        <div className="w-12 h-12 rounded-2xl bg-background/80 shadow-sm flex items-center justify-center mb-6 text-primary group-hover:text-accent transition-colors">
+                                            <service.icon className="w-6 h-6" />
+                                        </div>
+                                        <h3 className={cn("font-bold mb-3 font-heading text-foreground", isLarge ? "text-3xl" : "text-2xl")}>{service.title}</h3>
+                                        <p className={cn("text-muted-foreground leading-relaxed", isLarge ? "text-lg" : "text-sm")}>{service.description}</p>
+                                    </div>
+
+                                    <ul className={cn(isLarge ? "space-y-4" : "space-y-1")}>
+                                        {service.items.map((item) => (
+                                            <li key={item} className={cn("font-medium flex items-center gap-2 text-foreground/80", isLarge ? "text-base" : "text-sm")}>
+                                                <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+                </div>
             </div>
         </section>
     );

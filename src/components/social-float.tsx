@@ -38,7 +38,7 @@ export function SocialFloat() {
         transition={{ delay: 1.5, type: "spring", stiffness: 200 }}
         whileHover={{ scale: 1.15 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 transition-shadow"
+        className="w-14 h-14 rounded-full bg-linear-to-tr from-accent to-purple-600 flex items-center justify-center text-white shadow-lg shadow-accent/30 hover:shadow-accent/50 transition-shadow"
       >
         <InstagramIcon className="w-7 h-7" />
       </motion.a>

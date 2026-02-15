@@ -78,9 +78,9 @@ const serviceLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-white" role="contentinfo">
+    <footer className="bg-slate-900 text-white border-t border-slate-800" role="contentinfo">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 xl:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Column 1: Brand + Social */}
           <div className="lg:col-span-1 space-y-6">
@@ -115,7 +115,7 @@ export function Footer() {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4">Quick Links</h3>
+            <h3 className="font-heading font-bold text-lg mb-4 text-white">Quick Links</h3>
             <nav aria-label="Footer quick links">
               <ul className="space-y-2.5">
                 {quickLinks.map((link) => (
@@ -134,7 +134,7 @@ export function Footer() {
 
           {/* Column 3: Services */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4">Our Services</h3>
+            <h3 className="font-heading font-bold text-lg mb-4 text-white">Our Services</h3>
             <nav aria-label="Footer services links">
               <ul className="space-y-2.5">
                 {serviceLinks.map((link) => (
@@ -153,7 +153,7 @@ export function Footer() {
 
           {/* Column 4: Contact Info */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4">Contact Us</h3>
+            <h3 className="font-heading font-bold text-lg mb-4 text-white">Contact Us</h3>
             <address className="not-italic space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -190,27 +190,27 @@ export function Footer() {
       </div>
 
       {/* Google Maps Embed */}
-      <div className="w-full h-[250px] border-t border-slate-800">
+      <div className="w-full h-[300px] border-t border-slate-800 bg-slate-800/50">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.5!2d77.0167!3d11.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDAzJzAwLjAiTiA3N8KwMDEnMDAuMiJF!5e0!3m2!1sen!2sin!4v1700000000000"
           width="100%"
-          height="250"
+          height="100%"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Dr. Navi's Veterinary Clinic Location - Kalapatti, Coimbatore"
-          className="grayscale hover:grayscale-0 transition-all duration-500"
+          className="grayscale hover:grayscale-0 transition-all duration-500 opacity-80 hover:opacity-100"
         />
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="border-t border-slate-800 bg-slate-950">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 xl:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500">
             &copy; {new Date().getFullYear()} Dr. Navi&apos;s Veterinary Clinic. All rights reserved. | TNSVC Reg. #6862
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <Link href="/about" className="text-xs text-slate-500 hover:text-white transition-colors">
               Privacy Policy
             </Link>

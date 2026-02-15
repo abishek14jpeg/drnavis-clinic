@@ -76,7 +76,7 @@ export default function RegisterPage() {
             <div className="relative z-10 w-full max-w-md mx-4">
                 {/* Logo */}
                 <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 mb-4 shadow-lg shadow-purple-500/25">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary mb-4 shadow-lg shadow-primary/25">
                         <span className="text-2xl font-bold text-white">DN</span>
                     </div>
                     <h1 className="text-3xl font-bold text-white font-heading">Create Account</h1>
@@ -102,7 +102,7 @@ export default function RegisterPage() {
                                 value={form.name}
                                 onChange={(e) => updateField("name", e.target.value)}
                                 required
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all"
+                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
                                 placeholder="Alex Johnson"
                             />
                         </div>
@@ -117,7 +117,7 @@ export default function RegisterPage() {
                                 value={form.email}
                                 onChange={(e) => updateField("email", e.target.value)}
                                 required
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all"
+                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
                                 placeholder="alex@email.com"
                             />
                         </div>
@@ -131,7 +131,7 @@ export default function RegisterPage() {
                                 type="tel"
                                 value={form.phone}
                                 onChange={(e) => updateField("phone", e.target.value)}
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all"
+                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
                                 placeholder="+91 98765 43210"
                             />
                         </div>
@@ -144,7 +144,7 @@ export default function RegisterPage() {
                                 id="role"
                                 value={form.role}
                                 onChange={(e) => updateField("role", e.target.value)}
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all"
+                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
                             >
                                 <option value="PATIENT" className="bg-slate-900">Pet Owner / Patient</option>
                                 <option value="RECEPTIONIST" className="bg-slate-900">Receptionist</option>
@@ -163,7 +163,7 @@ export default function RegisterPage() {
                                     value={form.password}
                                     onChange={(e) => updateField("password", e.target.value)}
                                     required
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all pr-12"
+                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all pr-12"
                                     placeholder="Min 6 characters"
                                 />
                                 <button
@@ -186,7 +186,7 @@ export default function RegisterPage() {
                                 value={form.confirmPassword}
                                 onChange={(e) => updateField("confirmPassword", e.target.value)}
                                 required
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all"
+                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
                                 placeholder="••••••••"
                             />
                         </div>
@@ -194,7 +194,7 @@ export default function RegisterPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full py-3 bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-500 hover:to-blue-400 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 mt-2"
+                            className="w-full py-3 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/25 hover:shadow-primary/40 mt-2"
                         >
                             {loading ? (
                                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -210,7 +210,7 @@ export default function RegisterPage() {
                     <div className="mt-6 text-center">
                         <p className="text-blue-200/50 text-sm">
                             Already have an account?{" "}
-                            <Link href="/login" className="text-purple-400 hover:text-purple-300 font-medium transition-colors">
+                            <Link href="/login" className="text-primary hover:text-primary/80 font-medium transition-colors">
                                 Sign in
                             </Link>
                         </p>

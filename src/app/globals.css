@@ -39,19 +39,31 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes accordion-down {
-    from { height: 0; }
-    to { height: var(--radix-accordion-content-height); }
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
   }
+
   @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
   }
 }
 
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
-  @media (width >= 1400px) {
+
+  @media (width >=1400px) {
     max-width: 1400px;
   }
 }
@@ -63,73 +75,91 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --foreground: 224 71.4% 4.1%;
 
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card-foreground: 224 71.4% 4.1%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover-foreground: 224 71.4% 4.1%;
 
-  --primary: 212 100% 48%; /* #0070f3 */
+  /* Orange - Primary Brand Color (Was Accent) */
+  --primary: 24.6 95% 53.1%;
   --primary-foreground: 210 40% 98%;
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  /* Blue - Secondary/Supportive */
+  --secondary: 221.2 83.2% 53.3%;
+  --secondary-foreground: 210 40% 98%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  /* Violet - Accent/CTA (Was Primary) */
+  --accent: 262.1 83.3% 57.8%;
+  --accent-foreground: 210 40% 98%;
 
-  --accent: 73 100% 50%; /* Lime Green #ccff00 */
-  --accent-foreground: 222.2 47.4% 11.2%;
+  --muted: 220 14.3% 95.9%;
+  --muted-foreground: 220 8.9% 46.1%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 212 100% 48%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 24.6 95% 53.1%;
 
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
+  --background: 224 71.4% 4.1%;
   --foreground: 210 40% 98%;
 
-  --card: 222.2 84% 4.9%;
+  --card: 224 71.4% 4.1%;
   --card-foreground: 210 40% 98%;
 
-  --popover: 222.2 84% 4.9%;
+  --popover: 224 71.4% 4.1%;
   --popover-foreground: 210 40% 98%;
 
-  --primary: 212 100% 48%;
-  --primary-foreground: 222.2 47.4% 11.2%;
+  /* Orange - Primary Dark Mode */
+  --primary: 20.5 90.2% 48.2%;
+  --primary-foreground: 210 40% 98%;
 
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
+  /* Blue - Secondary Dark Mode */
+  --secondary: 217.2 91.2% 59.8%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+
+  /* Violet - Accent Dark Mode */
+  --accent: 263.4 70% 50.4%;
+  --accent-foreground: 210 40% 98%;
 
   --muted: 217.2 32.6% 17.5%;
   --muted-foreground: 215 20.2% 65.1%;
-
-  --accent: 73 100% 50%;
-  --accent-foreground: 222.2 47.4% 11.2%;
 
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
+  --ring: 20.5 90.2% 48.2%;
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
   }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   }
+}
+
+@utility bg-gradient-brand {
+  background-image: linear-gradient(to right, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--secondary)));
+}
+
+@utility text-gradient-brand {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--secondary)));
 }

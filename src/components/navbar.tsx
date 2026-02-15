@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/#services", label: "Services" },
+  { href: "/chat", label: "Chat" },
   { href: "/#faq", label: "FAQ" },
 ];
 
@@ -114,7 +115,7 @@ export function Navbar() {
               <Link
                 href="/register"
                 onClick={() => setMobileOpen(false)}
-                className="block px-4 py-3 text-base font-medium text-center bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                className="block px-4 py-3 text-base font-medium text-center bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
               >
                 Get Started
               </Link>
