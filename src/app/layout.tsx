@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     default: "Dr. Navi's Veterinary Clinic | Expert Surgeon & Pet Care in Coimbatore",
     template: "%s | Dr. Navi's Veterinary Clinic",
   },
+  // Updated Feb 16, 2026
   description:
     "Looking for a veterinary surgeon in Kalapatti, Coimbatore? Dr. Navi's Clinic offers orthopedic surgery, vaccinations, dental care, emergency services & pet boutique. 5.0★ rated. Call 93634 14845.",
   keywords: [
