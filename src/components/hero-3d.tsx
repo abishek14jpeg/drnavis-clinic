@@ -46,7 +46,7 @@ function MedicalCross(props: any) {
 
 export function Hero3D() {
     return (
-        <section className="w-full min-h-[85vh] flex flex-col lg:flex-row items-center justify-between container py-10 lg:py-0 relative overflow-hidden">
+        <section className="w-full min-h-[85vh] flex flex-col lg:flex-row items-center justify-between container py-10 lg:py-0 relative overflow-hidden" aria-label="Hero - Dr. Navi's Veterinary Clinic">
 
             {/* Background Decor */}
             <div className="absolute top-0 left-0 w-full h-full bg-linear-to-b from-blue-50/50 to-transparent -z-10 pointer-events-none" />
@@ -76,7 +76,7 @@ export function Hero3D() {
                 </div>
 
                 <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                    Dr. Navi&apos;s Clinic offers specialized orthopedic surgery, vaccinations, and 24/7 emergency care for your furry family members in Kalapatti.
+                    Dr. Navi&apos;s Clinic offers specialized orthopedic surgery, vaccinations, dental care, and 24/7 emergency services for your furry family members in Kalapatti, Coimbatore.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">

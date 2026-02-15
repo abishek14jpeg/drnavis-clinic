@@ -1,0 +1,16 @@
+{
+  "name": "Dr. Navi's Veterinary Clinic",
+  "short_name": "Dr. Navi's Clinic",
+  "description": "Expert Veterinary Surgeon & Pet Care in Kalapatti, Coimbatore. Orthopedic surgery, vaccinations, emergency care.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0070f3",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

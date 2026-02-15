@@ -7,6 +7,9 @@ import { Float, Environment, Center } from "@react-three/drei";
 import { Stethoscope, Bone, Heart, Star, ShieldCheck, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { SocialFloat } from "@/components/social-float";
 import { Group } from "three";
 
 /* ─── 3D DNA Helix ─── */
@@ -151,10 +154,11 @@ function AboutHero() {
                             <div className="w-[320px] h-[420px] md:w-[380px] md:h-[500px] rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-primary/10">
                                 <Image
                                     src="/dr-navi.png"
-                                    alt="Dr. S. Navaneethakrishnan"
+                                    alt="Dr. S. Navaneethakrishnan - M.V.Sc Veterinary Surgeon specializing in orthopedic surgery and radiology at Dr. Navi's Clinic, Kalapatti, Coimbatore"
                                     fill
                                     className="object-cover object-top"
                                     priority
+                                    sizes="(max-width: 768px) 320px, 380px"
                                 />
                             </div>
 
@@ -282,29 +286,8 @@ function StoryTimeline() {
 /* ─── Main About Page ─── */
 export default function AboutPage() {
     return (
-        <main className="min-h-screen bg-background relative overflow-x-hidden">
-            {/* Navigation */}
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-                <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
-                            DN
-                        </div>
-                        <span className="font-bold font-heading text-lg">Dr. Navi&apos;s Clinic</span>
-                    </Link>
-                    <div className="flex items-center gap-3">
-                        <Link href="/" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors hidden sm:block">
-                            Home
-                        </Link>
-                        <Link href="/login" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors">
-                            Sign In
-                        </Link>
-                        <Link href="/register" className="px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-                            Get Started
-                        </Link>
-                    </div>
-                </div>
-            </nav>
+        <main id="main-content" className="min-h-screen bg-background relative overflow-x-hidden">
+            <Navbar />
 
             {/* SECTION A: Hero */}
             <AboutHero />
@@ -467,11 +450,8 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="py-8 text-center text-sm text-muted-foreground border-t">
-                <p>&copy; {new Date().getFullYear()} Dr. Navi&apos;s Veterinary Clinic. All rights reserved.</p>
-                <p className="mt-2">No 13/5, Indira Nagar, Kalapatti, Coimbatore</p>
-            </footer>
+            <Footer />
+            <SocialFloat />
         </main>
     );
 }

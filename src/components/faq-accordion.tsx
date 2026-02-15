@@ -47,10 +47,10 @@ export function FAQAccordion() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section className="container py-24 max-w-3xl mx-auto">
+        <section id="faq" className="container py-24 max-w-3xl mx-auto" aria-labelledby="faq-heading">
             <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold font-heading mb-4">Common Questions</h2>
-                <p className="text-muted-foreground">Everything you need to know about your pet&apos;s health.</p>
+                <h2 id="faq-heading" className="text-4xl font-bold font-heading mb-4">Common Questions</h2>
+                <p className="text-muted-foreground">Everything you need to know about your pet&apos;s health and our veterinary services in Coimbatore.</p>
             </div>
 
             <div className="space-y-4">

@@ -37,13 +37,13 @@ const services = [
 
 export function ServicesBento() {
     return (
-        <section id="services" className="container py-24">
+        <section id="services" className="container py-24" aria-labelledby="services-heading">
             <div className="mb-12 text-center max-w-2xl mx-auto space-y-4">
-                <h2 className="text-4xl md:text-5xl font-bold font-heading tracking-tight">
+                <h2 id="services-heading" className="text-4xl md:text-5xl font-bold font-heading tracking-tight">
                     Comprehensive Care for Every Paw
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                    From routine checkups to complex surgeries, Dr. Navi provides world-class veterinary medicine.
+                    From routine checkups to complex orthopedic surgeries, Dr. Navi provides world-class veterinary medicine in Kalapatti, Coimbatore.
                 </p>
             </div>
 
