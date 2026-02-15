@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Eye, EyeOff, UserPlus, Stethoscope } from "lucide-react";
+import { Eye, EyeOff, UserPlus } from "lucide-react";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -77,7 +77,7 @@ export default function RegisterPage() {
                 {/* Logo */}
                 <div className="text-center mb-8">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 mb-4 shadow-lg shadow-purple-500/25">
-                        <Stethoscope className="w-8 h-8 text-white" />
+                        <span className="text-2xl font-bold text-white">DN</span>
                     </div>
                     <h1 className="text-3xl font-bold text-white font-heading">Create Account</h1>
                     <p className="text-blue-200/70 mt-2">Join Dr. Navi&apos;s Clinic Portal</p>

@@ -20,11 +20,11 @@ const services = [
         items: ["Vaccinations", "Dental Cleaning"]
     },
     {
-        title: "Emergency 24/7",
-        description: "Critical care for GDV, foreign body removal, and trauma.",
+        title: "Emergency Care",
+        description: "Critical care for GDV, foreign body removal, trauma, and house call services.",
         icon: HeartPulse,
         className: "md:col-span-1 md:row-span-1 bg-linear-to-br from-red-500/10 to-red-600/5 border-red-200/20",
-        items: ["GDV Treatment", "Trauma Care"]
+        items: ["GDV Treatment", "Trauma Care", "House Calls"]
     },
     {
         title: "Pet Boutique",
@@ -56,7 +56,7 @@ export function ServicesBento() {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
                         className={cn(
-                            "group relative overflow-hidden rounded-3xl border border-white/10 dark:border-white/5 p-8 transition-all hover:scale-[1.01] hover:shadow-xl",
+                            "group relative overflow-hidden rounded-3xl border border-white/10 dark:border-white/5 p-8 pb-10 transition-all hover:scale-[1.01] hover:shadow-xl",
                             "backdrop-blur-sm bg-white/50 dark:bg-black/20",
                             service.className
                         )}

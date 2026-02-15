@@ -51,6 +51,10 @@ export async function POST(req: NextRequest) {
         date: new Date(body.date),
         timeSlot: body.timeSlot,
         reason: body.reason,
+        appointmentType: body.appointmentType || "CLINIC",
+        contactPhone1: body.contactPhone1 || "",
+        contactPhone2: body.contactPhone2 || "",
+        area: body.area || "",
         status: "PENDING",
         notes: body.notes || "",
     });

@@ -18,7 +18,7 @@ export default function PatientPetsPage() {
     const [loading, setLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);
     const [editPet, setEditPet] = useState<Pet | null>(null);
-    const [form, setForm] = useState({ name: "", species: "", breed: "", age: "", weight: "", medicalNotes: "" });
+    const [form, setForm] = useState({ name: "", species: "", breed: "", age: "", medicalNotes: "" });
 
     const fetchPets = useCallback(async () => {
         const res = await fetch("/api/pets");
@@ -34,7 +34,7 @@ export default function PatientPetsPage() {
     }, [fetchPets]);
 
     const resetForm = () => {
-        setForm({ name: "", species: "", breed: "", age: "", weight: "", medicalNotes: "" });
+        setForm({ name: "", species: "", breed: "", age: "", medicalNotes: "" });
         setEditPet(null);
         setShowForm(false);
     };
@@ -44,7 +44,6 @@ export default function PatientPetsPage() {
         const payload = {
             ...form,
             age: form.age ? Number(form.age) : null,
-            weight: form.weight ? Number(form.weight) : null,
         };
 
         if (editPet) {
@@ -77,7 +76,6 @@ export default function PatientPetsPage() {
             species: pet.species,
             breed: pet.breed,
             age: pet.age?.toString() || "",
-            weight: pet.weight?.toString() || "",
             medicalNotes: pet.medicalNotes || "",
         });
         setShowForm(true);
@@ -138,10 +136,6 @@ export default function PatientPetsPage() {
                                     <label className="block text-sm font-medium mb-1">Age (years)</label>
                                     <input type="number" value={form.age} onChange={(e) => setForm({ ...form, age: e.target.value })} className="w-full px-3 py-2 border rounded-lg bg-background focus:ring-2 focus:ring-primary/50 outline-none" placeholder="e.g. 3" />
                                 </div>
-                                <div>
-                                    <label className="block text-sm font-medium mb-1">Weight (kg)</label>
-                                    <input type="number" step="0.1" value={form.weight} onChange={(e) => setForm({ ...form, weight: e.target.value })} className="w-full px-3 py-2 border rounded-lg bg-background focus:ring-2 focus:ring-primary/50 outline-none" placeholder="e.g. 12.5" />
-                                </div>
                             </div>
                             <div>
                                 <label className="block text-sm font-medium mb-1">Medical Notes</label>
@@ -165,7 +159,7 @@ export default function PatientPetsPage() {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {pets.map((pet) => (
-                        <div key={pet._id} className="bg-card rounded-xl border border-border p-5 hover:border-primary/30 transition-all group">
+                        <div key={pet._id} className="bg-card rounded-xl border border-border p-5 pb-6 hover:border-primary/30 transition-all group">
                             <div className="flex items-start justify-between mb-3">
                                 <div className="flex items-center gap-3">
                                     <div className="text-3xl">{speciesEmoji[pet.species] || "🐾"}</div>
@@ -181,7 +175,6 @@ export default function PatientPetsPage() {
                             </div>
                             <div className="flex gap-4 text-sm">
                                 {pet.age && <span className="text-muted-foreground">{pet.age} yrs old</span>}
-                                {pet.weight && <span className="text-muted-foreground">{pet.weight} kg</span>}
                             </div>
                             {pet.medicalNotes && (
                                 <p className="mt-2 text-xs text-muted-foreground bg-muted/50 p-2 rounded-lg">{pet.medicalNotes}</p>

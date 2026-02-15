@@ -63,10 +63,10 @@ function DashboardLayoutContent({ children }: { children: React.ReactNode }) {
                 collapsed ? "w-16" : "w-64"
             )}>
                 <div className="h-16 flex items-center px-4 border-b border-border">
-                    <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">
-                        CN
+                    <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
+                        DN
                     </div>
-                    {!collapsed && <span className="ml-3 font-bold font-heading">Clinic OS</span>}
+                    {!collapsed && <span className="ml-3 font-bold font-heading">Dr. Navi&apos;s</span>}
                 </div>
 
                 <div className="flex-1 p-4 space-y-2">

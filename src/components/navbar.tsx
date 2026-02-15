@@ -42,12 +42,12 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href="tel:+916381414845"
+            href="tel:+919363414845"
             className="ml-2 px-4 py-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1.5"
             aria-label="Call Dr. Navi's Clinic"
           >
             <Phone className="w-3.5 h-3.5" />
-            63814 14845
+            93634 14845
           </a>
           <Link
             href="/login"
@@ -96,12 +96,12 @@ export function Navbar() {
                 </Link>
               ))}
               <a
-                href="tel:+916381414845"
+                href="tel:+919363414845"
                 className="flex items-center gap-2 px-4 py-3 text-base font-medium text-primary hover:bg-muted/50 rounded-lg transition-colors"
                 aria-label="Call Dr. Navi's Clinic"
               >
                 <Phone className="w-4 h-4" />
-                63814 14845
+                93634 14845
               </a>
               <hr className="my-2 border-border" />
               <Link

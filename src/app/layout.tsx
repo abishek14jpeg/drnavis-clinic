@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Dr. Navi's Veterinary Clinic",
   },
   description:
-    "Looking for a veterinary surgeon in Kalapatti, Coimbatore? Dr. Navi's Clinic offers orthopedic surgery, vaccinations, dental care, emergency services & pet boutique. 5.0★ rated. Call 63814 14845.",
+    "Looking for a veterinary surgeon in Kalapatti, Coimbatore? Dr. Navi's Clinic offers orthopedic surgery, vaccinations, dental care, emergency services & pet boutique. 5.0★ rated. Call 93634 14845.",
   keywords: [
     "veterinary surgeon Kalapatti Coimbatore",
     "pet clinic near Nehru Nagar West",
@@ -46,7 +46,8 @@ export const metadata: Metadata = {
     "pet dental care Coimbatore",
     "veterinary radiology Coimbatore",
     "pet boutique Coimbatore",
-    "24/7 emergency vet Coimbatore",
+    "emergency vet Coimbatore",
+    "house call vet Coimbatore",
     "spaying neutering Coimbatore",
   ],
   authors: [{ name: "Dr. S. Navaneethakrishnan", url: BASE_URL }],
@@ -88,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dr. Navi's Veterinary Clinic | Expert Pet Care in Coimbatore",
     description:
-      "Expert vet surgeon in Kalapatti. Orthopedic surgery, vaccinations, emergency care. 5.0★ rated. Call 63814 14845.",
+      "Expert vet surgeon in Kalapatti. Orthopedic surgery, vaccinations, emergency care. 5.0★ rated. Call 93634 14845.",
     images: ["/dr-navi.png"],
   },
   manifest: "/manifest.json",
@@ -111,11 +112,11 @@ export default function RootLayout({
     "@type": "VeterinaryCare",
     name: "Dr. Navi's Veterinary Clinic",
     description:
-      "Expert Veterinary Surgeon & Pet Care in Kalapatti, Coimbatore. Specializing in orthopedic surgery, vaccinations, dental care, and 24/7 emergency services.",
+      "Expert Veterinary Surgeon & Pet Care in Kalapatti, Coimbatore. Specializing in orthopedic surgery, vaccinations, dental care, and emergency services with house calls.",
     url: BASE_URL,
     logo: `${BASE_URL}/dr-navi.png`,
     image: `${BASE_URL}/dr-navi.png`,
-    telephone: ["+916381414845", "+917598557063"],
+    telephone: ["+919363414845", "+917598557063"],
     email: "drnavisclinic@gmail.com",
     address: {
       "@type": "PostalAddress",
@@ -137,13 +138,31 @@ export default function RootLayout({
         dayOfWeek: [
           "Monday",
           "Tuesday",
-          "Wednesday",
           "Thursday",
           "Friday",
           "Saturday",
           "Sunday",
         ],
-        opens: "09:00",
+        opens: "10:00",
+        closes: "13:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "18:00",
+        closes: "21:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Wednesday"],
+        opens: "18:00",
         closes: "21:00",
       },
     ],
@@ -171,7 +190,7 @@ export default function RootLayout({
       itemListElement: [
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Orthopedic Surgery" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Vaccinations" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Emergency Care 24/7" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Emergency Care" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dental Care" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Radiology & Diagnostics" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Spaying & Neutering" } },
@@ -194,7 +213,7 @@ export default function RootLayout({
         name: "What are the consulting hours at Dr. Navi's Veterinary Clinic?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We are open Monday to Sunday, 9:00 AM to 9:00 PM. Emergency care is available 24/7.",
+          text: "Mon, Tue, Thu, Fri, Sat & Sun: 10:00 AM – 1:00 PM & 6:00 PM – 9:00 PM. Wednesday: 6:00 PM – 9:00 PM only. House call services available outside clinic hours.",
         },
       },
       {
@@ -226,7 +245,7 @@ export default function RootLayout({
         name: "What services does Dr. Navi's Clinic offer?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We offer orthopedic surgery, soft tissue surgery, vaccinations, dental cleaning, deworming, microchipping, lab diagnostics, emergency care 24/7, home visits, and a pet boutique.",
+          text: "We offer orthopedic surgery, soft tissue surgery, vaccinations, dental cleaning, deworming, microchipping, lab diagnostics, emergency care, home visits, and a pet boutique.",
         },
       },
       {

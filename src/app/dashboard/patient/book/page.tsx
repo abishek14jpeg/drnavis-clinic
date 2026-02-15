@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Calendar, Clock, Check } from "lucide-react";
+import { Calendar, Clock, Check, MapPin, Phone, Home, Building2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface Pet {
@@ -11,11 +11,19 @@ interface Pet {
     breed: string;
 }
 
-const TIME_SLOTS = [
-    "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM",
-    "11:00 AM", "11:30 AM", "02:00 PM", "02:30 PM",
-    "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM",
-    "05:00 PM", "05:30 PM",
+const CLINIC_SLOTS_REGULAR = [
+    "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM",
+    "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM",
+];
+
+const CLINIC_SLOTS_WEDNESDAY = [
+    "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM",
+];
+
+const HOUSE_CALL_SLOTS = [
+    "07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM",
+    "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM",
+    "04:30 PM", "05:00 PM", "05:30 PM",
 ];
 
 const REASONS = [
@@ -36,6 +44,10 @@ export default function BookAppointmentPage() {
         timeSlot: "",
         reason: "",
         notes: "",
+        appointmentType: "CLINIC" as "CLINIC" | "HOUSE_CALL",
+        contactPhone1: "",
+        contactPhone2: "",
+        area: "",
     });
 
     useEffect(() => {
@@ -44,6 +56,16 @@ export default function BookAppointmentPage() {
             setLoading(false);
         });
     }, []);
+
+    // Determine if selected date is Wednesday
+    const isWednesday = form.date ? new Date(form.date).getDay() === 3 : false;
+
+    // Get available time slots based on type and day
+    const getTimeSlots = () => {
+        if (form.appointmentType === "HOUSE_CALL") return HOUSE_CALL_SLOTS;
+        if (isWednesday) return CLINIC_SLOTS_WEDNESDAY;
+        return CLINIC_SLOTS_REGULAR;
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -101,11 +123,58 @@ export default function BookAppointmentPage() {
         );
     }
 
+    const timeSlots = getTimeSlots();
+
     return (
         <div className="max-w-2xl mx-auto space-y-6">
             <h2 className="text-3xl font-bold font-heading">Book an Appointment</h2>
 
             <form onSubmit={handleSubmit} className="space-y-6 bg-card rounded-2xl border border-border p-6">
+                {/* Appointment Type */}
+                <div>
+                    <label className="block text-sm font-semibold mb-2">Appointment Type</label>
+                    <div className="grid grid-cols-2 gap-3">
+                        <button
+                            type="button"
+                            onClick={() => setForm({ ...form, appointmentType: "CLINIC", timeSlot: "" })}
+                            className={`p-4 border rounded-xl text-left transition-all flex items-center gap-3 ${form.appointmentType === "CLINIC"
+                                    ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                                    : "border-border hover:border-primary/30"
+                                }`}
+                        >
+                            <Building2 className="w-5 h-5 text-primary" />
+                            <div>
+                                <p className="font-bold">Clinic Visit</p>
+                                <p className="text-xs text-muted-foreground">Visit the clinic</p>
+                            </div>
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setForm({ ...form, appointmentType: "HOUSE_CALL", timeSlot: "" })}
+                            className={`p-4 border rounded-xl text-left transition-all flex items-center gap-3 ${form.appointmentType === "HOUSE_CALL"
+                                    ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                                    : "border-border hover:border-primary/30"
+                                }`}
+                        >
+                            <Home className="w-5 h-5 text-green-600" />
+                            <div>
+                                <p className="font-bold">House Call</p>
+                                <p className="text-xs text-muted-foreground">Doctor visits you</p>
+                            </div>
+                        </button>
+                    </div>
+                    {form.appointmentType === "CLINIC" && (
+                        <p className="text-xs text-muted-foreground mt-2">
+                            Mon, Tue, Thu–Sun: 10 AM – 1 PM &amp; 6 PM – 9 PM | Wed: 6 PM – 9 PM only
+                        </p>
+                    )}
+                    {form.appointmentType === "HOUSE_CALL" && (
+                        <p className="text-xs text-green-600 mt-2">
+                            House calls available outside clinic hours. Address/area required.
+                        </p>
+                    )}
+                </div>
+
                 {/* Select Pet */}
                 <div>
                     <label className="block text-sm font-semibold mb-2">Select Pet</label>
@@ -127,6 +196,49 @@ export default function BookAppointmentPage() {
                     </div>
                 </div>
 
+                {/* Contact Information */}
+                <div className="space-y-3">
+                    <label className="block text-sm font-semibold flex items-center gap-2">
+                        <Phone className="w-4 h-4" /> Contact Information
+                    </label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label className="block text-xs text-muted-foreground mb-1">Phone Number 1 *</label>
+                            <input
+                                type="tel"
+                                value={form.contactPhone1}
+                                onChange={(e) => setForm({ ...form, contactPhone1: e.target.value })}
+                                required
+                                className="w-full px-4 py-3 border rounded-xl bg-background focus:ring-2 focus:ring-primary/50 outline-none"
+                                placeholder="e.g. 93634 14845"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-xs text-muted-foreground mb-1">Phone Number 2 (optional)</label>
+                            <input
+                                type="tel"
+                                value={form.contactPhone2}
+                                onChange={(e) => setForm({ ...form, contactPhone2: e.target.value })}
+                                className="w-full px-4 py-3 border rounded-xl bg-background focus:ring-2 focus:ring-primary/50 outline-none"
+                                placeholder="Alternate number"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="block text-xs text-muted-foreground mb-1 flex items-center gap-1">
+                            <MapPin className="w-3 h-3" /> Area / Address *
+                        </label>
+                        <input
+                            type="text"
+                            value={form.area}
+                            onChange={(e) => setForm({ ...form, area: e.target.value })}
+                            required
+                            className="w-full px-4 py-3 border rounded-xl bg-background focus:ring-2 focus:ring-primary/50 outline-none"
+                            placeholder={form.appointmentType === "HOUSE_CALL" ? "Full address for house call" : "Your area, e.g. Kalapatti, Saravanampatti"}
+                        />
+                    </div>
+                </div>
+
                 {/* Date */}
                 <div>
                     <label className="block text-sm font-semibold mb-2 flex items-center gap-2">
@@ -136,10 +248,13 @@ export default function BookAppointmentPage() {
                         type="date"
                         min={minDate}
                         value={form.date}
-                        onChange={(e) => setForm({ ...form, date: e.target.value })}
+                        onChange={(e) => setForm({ ...form, date: e.target.value, timeSlot: "" })}
                         required
                         className="w-full px-4 py-3 border rounded-xl bg-background focus:ring-2 focus:ring-primary/50 outline-none"
                     />
+                    {form.date && isWednesday && form.appointmentType === "CLINIC" && (
+                        <p className="text-xs text-amber-600 mt-1">Wednesday — clinic open only 6 PM – 9 PM</p>
+                    )}
                 </div>
 
                 {/* Time Slot */}
@@ -148,7 +263,7 @@ export default function BookAppointmentPage() {
                         <Clock className="w-4 h-4" /> Select Time
                     </label>
                     <div className="grid grid-cols-4 gap-2">
-                        {TIME_SLOTS.map((slot) => (
+                        {timeSlots.map((slot) => (
                             <button
                                 key={slot}
                                 type="button"
@@ -198,10 +313,10 @@ export default function BookAppointmentPage() {
 
                 <button
                     type="submit"
-                    disabled={submitting || !form.petId || !form.date || !form.timeSlot || !form.reason}
+                    disabled={submitting || !form.petId || !form.date || !form.timeSlot || !form.reason || !form.contactPhone1 || !form.area}
                     className="w-full py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {submitting ? "Booking..." : "Confirm Appointment"}
+                    {submitting ? "Booking..." : `Confirm ${form.appointmentType === "HOUSE_CALL" ? "House Call" : "Appointment"}`}
                 </button>
             </form>
         </div>

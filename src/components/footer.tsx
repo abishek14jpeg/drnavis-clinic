@@ -70,7 +70,7 @@ const quickLinks = [
 const serviceLinks = [
   { href: "/#services", label: "Orthopedic Surgery" },
   { href: "/#services", label: "Vaccinations" },
-  { href: "/#services", label: "Emergency Care 24/7" },
+  { href: "/#services", label: "Emergency Care" },
   { href: "/#services", label: "Dental Cleaning" },
   { href: "/#services", label: "Pet Boutique" },
   { href: "/#services", label: "Lab Diagnostics" },
@@ -166,15 +166,16 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
                 <div className="text-sm text-slate-400">
-                  <a href="tel:+916381414845" className="hover:text-white transition-colors block">63814 14845</a>
+                  <a href="tel:+919363414845" className="hover:text-white transition-colors block">93634 14845</a>
                   <a href="tel:+917598557063" className="hover:text-white transition-colors block">75985 57063</a>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-primary flex-shrink-0" />
                 <p className="text-sm text-slate-400">
-                  Mon–Sun: 9:00 AM – 9:00 PM<br />
-                  <span className="text-xs text-green-400">Emergency 24/7</span>
+                  Mon–Sun (except Wed): 10 AM – 1 PM &amp; 6 PM – 9 PM<br />
+                  Wednesday: 6 PM – 9 PM only<br />
+                  <span className="text-xs text-green-400">House calls available</span>
                 </p>
               </div>
               <div className="flex items-center gap-3">

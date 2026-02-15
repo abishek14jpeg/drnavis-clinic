@@ -76,7 +76,7 @@ export function Hero3D() {
                 </div>
 
                 <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                    Dr. Navi&apos;s Clinic offers specialized orthopedic surgery, vaccinations, dental care, and 24/7 emergency services for your furry family members in Kalapatti, Coimbatore.
+                    Dr. Navi&apos;s Clinic offers specialized orthopedic surgery, vaccinations, dental care, and emergency services with house calls for your furry family members in Kalapatti, Coimbatore.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">

@@ -73,7 +73,6 @@ export default function DoctorPatientsPage() {
                                         <p className="text-sm text-muted-foreground">{pet.species} • {pet.breed}</p>
                                         <div className="flex gap-3 text-xs text-muted-foreground mt-1">
                                             {pet.age && <span>{pet.age} yrs</span>}
-                                            {pet.weight && <span>{pet.weight} kg</span>}
                                         </div>
                                         {pet.medicalNotes && (
                                             <p className="text-xs text-muted-foreground mt-2 italic">{pet.medicalNotes}</p>

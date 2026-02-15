@@ -28,8 +28,8 @@ export default function Home() {
           </div>
           <div className="w-px h-8 bg-border hidden md:block" />
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold font-heading text-foreground">24/7</span>
-            <span className="text-sm text-muted-foreground">Emergency Care</span>
+            <span className="text-2xl font-bold font-heading text-foreground">🏠</span>
+            <span className="text-sm text-muted-foreground">House Calls Available</span>
           </div>
           <div className="w-px h-8 bg-border hidden md:block" />
           <div className="flex items-center gap-2">
@@ -53,7 +53,7 @@ export default function Home() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <article className="p-6 rounded-2xl border border-border bg-card hover:shadow-lg transition-shadow">
+          <article className="p-6 pb-8 rounded-2xl border border-border bg-card hover:shadow-lg transition-shadow">
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
               <span className="text-2xl">🏥</span>
             </div>
@@ -65,7 +65,7 @@ export default function Home() {
               Meet Dr. Navi &rarr;
             </Link>
           </article>
-          <article className="p-6 rounded-2xl border border-border bg-card hover:shadow-lg transition-shadow">
+          <article className="p-6 pb-8 rounded-2xl border border-border bg-card hover:shadow-lg transition-shadow">
             <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
               <span className="text-2xl">🐾</span>
             </div>
@@ -77,13 +77,13 @@ export default function Home() {
               View Services &rarr;
             </Link>
           </article>
-          <article className="p-6 rounded-2xl border border-border bg-card hover:shadow-lg transition-shadow">
+          <article className="p-6 pb-8 rounded-2xl border border-border bg-card hover:shadow-lg transition-shadow">
             <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
               <span className="text-2xl">⏰</span>
             </div>
-            <h3 className="text-lg font-bold font-heading mb-2">24/7 Emergency Access</h3>
+            <h3 className="text-lg font-bold font-heading mb-2">House Call Service</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Critical care available round the clock for GDV, trauma, foreign body removal, and other pet emergencies.
+              Can&apos;t visit the clinic? Book a house call for convenient veterinary care at your doorstep, available outside clinic hours.
             </p>
             <a href="https://api.whatsapp.com/send?phone=919363414845" target="_blank" rel="noopener noreferrer" className="text-sm text-green-600 font-medium mt-3 inline-block hover:underline">
               WhatsApp Us &rarr;

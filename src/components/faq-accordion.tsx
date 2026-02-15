@@ -39,7 +39,7 @@ const faqs = [
     },
     {
         question: "What are your consulting hours?",
-        content: "We are open Monday to Sunday, 9:00 AM to 9:00 PM. Emergency care is available 24/7."
+        content: "Mon, Tue, Thu, Fri, Sat & Sun: 10:00 AM – 1:00 PM & 6:00 PM – 9:00 PM. Wednesday: 6:00 PM – 9:00 PM only. House call services available outside clinic hours."
     }
 ];
 
