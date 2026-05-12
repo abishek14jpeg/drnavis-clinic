@@ -1,0 +1,23 @@
+make these corrections , test it and redeploy after checking that the system has applied these changes and it is fully functional
+
+remove "24/7 " from everywhere in the website
+
+function timing are everyday 10 am to 1pm and 6pm to 9pm , Wednesday alone 6pm to 9pm only
+
+and for booking consultancy, the customer has to provide their contact info , if he/she has 2 number they have to provide both and their address ( area alone)
+
+He (Dr navi) is going for house call also , for that also customer can book appointment, the timing can be any time leaving the clinic opening timings.
+
+ Remove the pet "weight" section in create pet
+
++91 93634 14845 this is the clinic contact number, not that one in the opening page
+
+my advisor asked that the logo must appear at any relevant place .
+
+you need to add some paddings in those cards
+
+On the bottom of the cards alone
+
+9. Chat page where customers can ask queries online?
+
+he wanted orange blue violet theme that resembles the logo
